@@ -1,0 +1,21 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const adminRouter = require("./routes/admin");
+const userRouter = require("./routes/user");
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+
+app.use("/admin", adminRouter)
+app.use("/user", userRouter)
+app.get("/", (req, res) => res.json({msg: "hello world after the class"}));
+
+// Connect to MongoDB
+// DONT MISUSE THIS THANKYOU!!
+mongoose.connect('mongodb+srv://gchaitanya1419:Chaitanya14@cluster0.bpwbtja.mongodb.net/courses', { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
+
+app.listen(4000, () => console.log('Server running on port 4000'));
