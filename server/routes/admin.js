@@ -25,6 +25,7 @@ router.get("/me", authenticateJwt, async (req, res) => {
 });
 
 
+//signup route
 
 router.post('/signup', (req, res) => {
     const { username, password } = req.body;
@@ -46,7 +47,7 @@ router.post('/signup', (req, res) => {
   });
 
 
-
+//signin route
   
   router.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -60,7 +61,7 @@ router.post('/signup', (req, res) => {
   });
   
 
-
+//route to get all courses
 
   router.post('/courses', authenticateJwt, async (req, res) => {
     const course = new Course(req.body);
@@ -70,7 +71,7 @@ router.post('/signup', (req, res) => {
 
 
 
-
+//route to get single course
 
   
   router.put('/courses/:courseId', authenticateJwt, async (req, res) => {
